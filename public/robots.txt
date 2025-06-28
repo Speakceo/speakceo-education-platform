@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Block access to admin paths
+Disallow: /admin/
+Disallow: /dashboard/admin/
+Disallow: /api/admin/
+
+# Block access to auth paths
+Disallow: /auth/
+Disallow: /login/
+Disallow: /signup/
+
+# Sitemap location
+Sitemap: https://speakceo.ai/sitemap.xml
+
+# Allow public routes
+Allow: /about
+Allow: /courses
+Allow: /tools
+Allow: /community
+Allow: /live-classes
+Allow: /contact 

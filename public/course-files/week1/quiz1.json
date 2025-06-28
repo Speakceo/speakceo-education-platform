@@ -1,0 +1,74 @@
+{
+  "id": "quiz-1",
+  "title": "Entrepreneurship Fundamentals Quiz",
+  "description": "Test your understanding of basic entrepreneurship concepts",
+  "timeLimit": 15,
+  "xpReward": 5,
+  "questions": [
+    {
+      "id": "q1-1",
+      "question": "What is the primary goal of an entrepreneur?",
+      "options": [
+        "Making money",
+        "Solving problems and creating value",
+        "Being famous",
+        "Working alone"
+      ],
+      "correct": 1,
+      "explanation": "Entrepreneurs primarily focus on solving problems and creating value for customers, which then leads to financial success.",
+      "points": 1
+    },
+    {
+      "id": "q1-2",
+      "question": "Which trait is most important for entrepreneurs?",
+      "options": [
+        "Being rich",
+        "Persistence and resilience",
+        "Having a college degree",
+        "Being popular"
+      ],
+      "correct": 1,
+      "explanation": "Persistence and resilience help entrepreneurs overcome challenges and setbacks on their journey.",
+      "points": 1
+    },
+    {
+      "id": "q1-3",
+      "question": "What type of entrepreneur focuses on social impact?",
+      "options": [
+        "Serial entrepreneur",
+        "Social entrepreneur",
+        "Corporate entrepreneur",
+        "Lifestyle entrepreneur"
+      ],
+      "correct": 1,
+      "explanation": "Social entrepreneurs focus on creating positive social impact while building sustainable businesses.",
+      "points": 1
+    },
+    {
+      "id": "q1-4",
+      "question": "Entrepreneurial thinking involves:",
+      "options": [
+        "Following rules strictly",
+        "Creative problem-solving",
+        "Avoiding risks",
+        "Working in isolation"
+      ],
+      "correct": 1,
+      "explanation": "Entrepreneurial thinking emphasizes creative problem-solving and finding innovative solutions.",
+      "points": 1
+    },
+    {
+      "id": "q1-5",
+      "question": "The best time to start thinking like an entrepreneur is:",
+      "options": [
+        "After college",
+        "When you have money",
+        "Right now, regardless of age",
+        "Only as an adult"
+      ],
+      "correct": 2,
+      "explanation": "Entrepreneurial thinking can be developed at any age, and starting young provides more time to learn and grow.",
+      "points": 1
+    }
+  ]
+} 

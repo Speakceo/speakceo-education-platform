@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      target: build
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL}
+      - VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}
+      - VITE_OPENAI_API_KEY=${VITE_OPENAI_API_KEY}
+    command: npm run dev
+    networks:
+      - app-network
+
+  supabase:
+    image: supabase/supabase-local:latest
+    ports:
+      - "54321:54321"
+      - "54322:54322"
+    environment:
+      - POSTGRES_PASSWORD=your-super-secret-password
+      - JWT_SECRET=your-super-secret-jwt-token
+      - DASHBOARD_USERNAME=admin
+      - DASHBOARD_PASSWORD=admin
+    volumes:
+      - supabase-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  supabase-data: 

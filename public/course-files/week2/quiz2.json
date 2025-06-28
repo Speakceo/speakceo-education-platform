@@ -1,0 +1,74 @@
+{
+  "id": "quiz-2",
+  "title": "Idea Generation & Validation Quiz",
+  "description": "Test your understanding of idea generation and validation techniques",
+  "timeLimit": 15,
+  "xpReward": 5,
+  "questions": [
+    {
+      "id": "q2-1",
+      "question": "The best business ideas often come from:",
+      "options": [
+        "Copying others",
+        "Solving personal problems",
+        "Random thoughts",
+        "Popular trends only"
+      ],
+      "correct": 1,
+      "explanation": "Ideas that solve personal problems are often the most authentic and have a clear target audience.",
+      "points": 1
+    },
+    {
+      "id": "q2-2",
+      "question": "What is the first step in idea validation?",
+      "options": [
+        "Building the product",
+        "Getting feedback",
+        "Raising money",
+        "Quitting school"
+      ],
+      "correct": 1,
+      "explanation": "Getting feedback from potential customers is crucial before investing resources in development.",
+      "points": 1
+    },
+    {
+      "id": "q2-3",
+      "question": "A good brainstorming session should:",
+      "options": [
+        "Criticize all ideas",
+        "Focus on quality over quantity",
+        "Generate many ideas without judgment",
+        "Only include experts"
+      ],
+      "correct": 2,
+      "explanation": "Effective brainstorming encourages quantity and delays judgment to foster creativity.",
+      "points": 1
+    },
+    {
+      "id": "q2-4",
+      "question": "When identifying problems to solve, look for:",
+      "options": [
+        "Problems only you have",
+        "Frequently occurring frustrations",
+        "Problems that are impossible to solve",
+        "Problems others are already solving"
+      ],
+      "correct": 1,
+      "explanation": "Frequently occurring frustrations indicate a larger market opportunity.",
+      "points": 1
+    },
+    {
+      "id": "q2-5",
+      "question": "The main purpose of idea validation is to:",
+      "options": [
+        "Prove you're right",
+        "Reduce risk and uncertainty",
+        "Impress investors",
+        "Delay starting"
+      ],
+      "correct": 1,
+      "explanation": "Validation helps reduce risk by testing assumptions before major investments.",
+      "points": 1
+    }
+  ]
+} 
