@@ -605,7 +605,7 @@ export default function AdminDashboard() {
             <Users className="h-8 w-8 text-blue-600" />
           </div>
         </div>
-
+        
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -616,7 +616,7 @@ export default function AdminDashboard() {
             <BookOpen className="h-8 w-8 text-green-600" />
           </div>
         </div>
-
+        
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -627,7 +627,7 @@ export default function AdminDashboard() {
             <Mail className="h-8 w-8 text-purple-600" />
           </div>
         </div>
-
+        
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -668,8 +668,8 @@ export default function AdminDashboard() {
               <div className="flex items-center">
                 <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
                 <span className="text-green-600 font-medium">Healthy</span>
+                </div>
               </div>
-            </div>
             <div className="flex items-center justify-between">
               <span className="text-gray-600">Server Load</span>
               <div className="flex items-center">
@@ -698,7 +698,7 @@ export default function AdminDashboard() {
           <h2 className="text-2xl font-bold text-gray-900">User Management</h2>
           <p className="text-gray-600">Manage all users and their access</p>
         </div>
-        <button 
+        <button
           onClick={() => setShowAddUserModal(true)}
           className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
         >
@@ -721,7 +721,7 @@ export default function AdminDashboard() {
             />
           </div>
         </div>
-        <select
+            <select
           value={filterRole}
           onChange={(e) => setFilterRole(e.target.value)}
           className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
@@ -730,27 +730,27 @@ export default function AdminDashboard() {
           <option value="student">Students</option>
           <option value="instructor">Instructors</option>
           <option value="admin">Admins</option>
-        </select>
-      </div>
+            </select>
+          </div>
 
       {/* Users Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
+          <thead className="bg-gray-50">
+            <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course Type</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
               {filteredUsers.map(user => (
                 <tr key={user.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-6 py-4 whitespace-nowrap">
                     <div>
                       <div className="text-sm font-medium text-gray-900">{user.name}</div>
                       <div className="text-sm text-gray-500">{user.email}</div>
@@ -761,13 +761,13 @@ export default function AdminDashboard() {
                       user.role === 'admin' ? 'bg-red-100 text-red-800' :
                       user.role === 'instructor' ? 'bg-blue-100 text-blue-800' :
                       'bg-green-100 text-green-800'
-                    }`}>
-                      {user.role}
-                    </span>
-                  </td>
+                  }`}>
+                    {user.role}
+                  </span>
+                </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {user.course_type}
-                  </td>
+                </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="w-16 bg-gray-200 rounded-full h-2 mr-2">
@@ -775,9 +775,9 @@ export default function AdminDashboard() {
                           className="bg-indigo-600 h-2 rounded-full" 
                           style={{ width: `${user.progress || 0}%` }}
                         ></div>
-                      </div>
+      </div>
                       <span className="text-sm text-gray-600">{user.progress || 0}%</span>
-                    </div>
+    </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
@@ -788,31 +788,31 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div className="flex space-x-2">
-                      <button 
+        <button
                         onClick={() => handleEditUser(user)}
                         className="text-indigo-600 hover:text-indigo-900"
                         title="Edit User"
-                      >
+        >
                         <Edit className="h-4 w-4" />
-                      </button>
-                      <button 
+        </button>
+            <button
                         onClick={() => handleToggleUserStatus(user.id, user.is_active)}
                         className={`${user.is_active ? 'text-orange-600 hover:text-orange-900' : 'text-green-600 hover:text-green-900'}`}
                         title={user.is_active ? 'Deactivate User' : 'Activate User'}
-                      >
+            >
                         <Settings className="h-4 w-4" />
-                      </button>
-                      <button 
+            </button>
+            <button
                         onClick={() => handleDeleteUser(user.id, user.email)}
                         className="text-red-600 hover:text-red-900"
                         title="Delete User"
                       >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </div>
                   </td>
                 </tr>
-              ))}
+        ))}
             </tbody>
           </table>
         </div>
@@ -841,7 +841,7 @@ export default function AdminDashboard() {
             <div>
               <p className="text-sm font-medium text-gray-600">Total Courses</p>
               <p className="text-2xl font-bold text-gray-900">{courses.length}</p>
-            </div>
+          </div>
             <BookOpen className="h-8 w-8 text-blue-600" />
           </div>
         </div>
@@ -852,8 +852,8 @@ export default function AdminDashboard() {
               <p className="text-2xl font-bold text-gray-900">{courses.filter(c => c.is_active).length}</p>
             </div>
             <CheckCircle className="h-8 w-8 text-green-600" />
-          </div>
-        </div>
+              </div>
+              </div>
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -867,8 +867,8 @@ export default function AdminDashboard() {
             </div>
             <TrendingUp className="h-8 w-8 text-orange-600" />
           </div>
-        </div>
       </div>
+    </div>
 
       {/* Courses Table */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -911,31 +911,31 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div className="flex space-x-2">
-                      <button 
+        <button
                         onClick={() => handleEditUser(user)}
                         className="text-indigo-600 hover:text-indigo-900"
                         title="Edit User"
-                      >
+        >
                         <Edit className="h-4 w-4" />
-                      </button>
-                      <button 
+        </button>
+            <button
                         onClick={() => handleToggleUserStatus(user.id, user.is_active)}
                         className={`${user.is_active ? 'text-orange-600 hover:text-orange-900' : 'text-green-600 hover:text-green-900'}`}
                         title={user.is_active ? 'Deactivate User' : 'Activate User'}
-                      >
+            >
                         <Settings className="h-4 w-4" />
-                      </button>
-                      <button 
+            </button>
+            <button
                         onClick={() => handleDeleteUser(user.id, user.email)}
                         className="text-red-600 hover:text-red-900"
                         title="Delete User"
                       >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
+                  <Trash2 className="h-4 w-4" />
+                </button>
+              </div>
                   </td>
                 </tr>
-              ))}
+        ))}
             </tbody>
           </table>
         </div>
@@ -965,8 +965,8 @@ export default function AdminDashboard() {
           <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">Access Denied</h2>
           <p className="text-gray-600 text-center">You need admin privileges to access this area.</p>
+          </div>
         </div>
-      </div>
     );
   }
 
@@ -976,32 +976,32 @@ export default function AdminDashboard() {
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+                <div className="flex items-center">
               <h1 className="text-xl font-semibold text-gray-900">Admin Panel</h1>
               <span className="ml-2 text-sm text-gray-500">Manage your startup school platform</span>
-            </div>
+                  </div>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span className="text-sm text-gray-600">System healthy</span>
-              </div>
+                </div>
               <button className="p-2 text-gray-600 hover:text-gray-900">
                 <Bell className="h-5 w-5" />
-              </button>
+                  </button>
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-gray-700">Welcome, {user.name}</span>
                 <span className="px-2 py-1 bg-red-100 text-red-800 text-xs font-medium rounded">ADMIN</span>
               </div>
-              <button
+                  <button
                 onClick={logout}
                 className="flex items-center px-3 py-2 text-gray-600 hover:text-gray-900"
               >
                 <LogOut className="h-4 w-4 mr-1" />
                 Logout
-              </button>
-            </div>
-          </div>
-        </div>
+                  </button>
+                </div>
+              </div>
+                </div>
       </header>
 
       <div className="flex">
@@ -1012,7 +1012,7 @@ export default function AdminDashboard() {
               {adminTabs.map(tab => {
                 const Icon = tab.icon;
                 return (
-                  <button
+              <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`w-full flex items-center px-4 py-3 text-left rounded-lg transition-colors ${
@@ -1023,18 +1023,18 @@ export default function AdminDashboard() {
                   >
                     <Icon className="h-5 w-5 mr-3" />
                     {tab.label}
-                  </button>
+              </button>
                 );
               })}
             </div>
-          </div>
+        </div>
         </nav>
 
         {/* Main Content */}
         <main className="flex-1 p-8">
           {renderContent()}
         </main>
-      </div>
+          </div>
 
       {/* Add User Modal */}
       {showAddUserModal && (
@@ -1042,19 +1042,19 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-lg p-6 w-full max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Add New User</h3>
-              <button 
+          <button
                 onClick={() => setShowAddUserModal(false)}
                 className="text-gray-400 hover:text-gray-600"
-              >
+          >
                 <X className="h-5 w-5" />
-              </button>
-            </div>
-            
+          </button>
+        </div>
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
-                <input
-                  type="text"
+              <input
+                type="text"
                   value={userFormData.name}
                   onChange={(e) => setUserFormData({...userFormData, name: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -1086,7 +1086,7 @@ export default function AdminDashboard() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                <select
+              <select
                   value={userFormData.role}
                   onChange={(e) => setUserFormData({...userFormData, role: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -1094,8 +1094,8 @@ export default function AdminDashboard() {
                   <option value="student">Student</option>
                   <option value="instructor">Instructor</option>
                   <option value="admin">Admin</option>
-                </select>
-              </div>
+              </select>
+            </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Course Type</label>
@@ -1127,9 +1127,9 @@ export default function AdminDashboard() {
                 {isLoading ? 'Creating...' : 'Create User'}
               </button>
             </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
       {/* Edit User Modal */}
       {showEditUserModal && (
@@ -1137,14 +1137,14 @@ export default function AdminDashboard() {
           <div className="bg-white rounded-lg p-6 w-full max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Edit User</h3>
-              <button 
+                  <button 
                 onClick={() => setShowEditUserModal(false)}
                 className="text-gray-400 hover:text-gray-600"
               >
                 <X className="h-5 w-5" />
-              </button>
-            </div>
-            
+                  </button>
+        </div>
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name *</label>
@@ -1154,7 +1154,7 @@ export default function AdminDashboard() {
                   onChange={(e) => setUserFormData({...userFormData, name: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
-              </div>
+          </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
@@ -1164,7 +1164,7 @@ export default function AdminDashboard() {
                   onChange={(e) => setUserFormData({...userFormData, email: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
-              </div>
+        </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
@@ -1177,7 +1177,7 @@ export default function AdminDashboard() {
                   <option value="instructor">Instructor</option>
                   <option value="admin">Admin</option>
                 </select>
-              </div>
+            </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Course Type</label>
@@ -1190,17 +1190,17 @@ export default function AdminDashboard() {
                   <option value="Premium">Premium</option>
                   <option value="Enterprise">Enterprise</option>
                 </select>
-              </div>
-            </div>
+          </div>
+        </div>
             
             <div className="flex justify-end space-x-3 mt-6">
-              <button
+                    <button
                 onClick={() => setShowEditUserModal(false)}
                 className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
                 disabled={isLoading}
               >
                 Cancel
-              </button>
+                    </button>
               <button
                 onClick={handleUpdateUser}
                 className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
@@ -1208,10 +1208,10 @@ export default function AdminDashboard() {
               >
                 {isLoading ? 'Updating...' : 'Update User'}
               </button>
-            </div>
-          </div>
+              </div>
+                </div>
         </div>
-      )}
+              )}
     </div>
   );
 } 

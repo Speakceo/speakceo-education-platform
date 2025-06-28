@@ -45,7 +45,7 @@ export async function getUserSkills(userId: string): Promise<UserSkills> {
     
     if (progressError && progressError.code !== 'PGRST116') {
       console.error('Error fetching user progress:', progressError);
-      return getDefaultSkills();
+        return getDefaultSkills();
     }
     
     // Get all modules to map lessons to skills
@@ -315,14 +315,14 @@ export async function getLearningMetrics(userId: string): Promise<LearningMetric
 
 // Get default metrics
 function getDefaultMetrics(): LearningMetrics {
-  return {
-    courseProgress: 0,
-    completedLessons: 0,
-    studyHours: 0,
-    averageScore: 0,
-    achievementsCount: 0
-  };
-}
+    return {
+      courseProgress: 0,
+      completedLessons: 0,
+      studyHours: 0,
+      averageScore: 0,
+      achievementsCount: 0
+    };
+  }
 
 // Admin Analytics Functions - Real Data
 export async function getAdminAnalyticsData(timeRange: string = 'month') {

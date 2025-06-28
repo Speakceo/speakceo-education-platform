@@ -7,12 +7,14 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react({
+      // Enable React Fast Refresh for better development experience
       fastRefresh: true
     }),
     tsconfigPaths(),
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
+        // Enhanced caching strategies
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
@@ -22,18 +24,18 @@ export default defineConfig({
               cacheName: 'google-fonts-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
               }
             }
           },
           {
-            urlPattern: /^https:\/\/images\.unsplash\.com\/.*/i,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'unsplash-images-cache',
+              cacheName: 'images-cache',
               expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
               }
             }
           }
@@ -43,7 +45,7 @@ export default defineConfig({
       manifest: {
         name: 'SpeakCEO - Young Entrepreneurship Program',
         short_name: 'SpeakCEO',
-        description: 'Transform your child into a future business leader',
+        description: 'Transform your child into a future business leader with our comprehensive 90-Day Young CEO Program.',
         theme_color: '#4F46E5',
         background_color: '#ffffff',
         display: 'standalone',
@@ -51,7 +53,8 @@ export default defineConfig({
           {
             src: '/icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/icons/icon-512x512.png',
@@ -71,12 +74,31 @@ export default defineConfig({
     host: 'localhost',
     port: 5173,
     strictPort: true,
-    open: true
+    open: true,
+    hmr: {
+      timeout: 5000
+    },
+    middlewareMode: false,
+    proxy: {}
+  },
+  preview: {
+    port: 3000,
+    strictPort: true,
+    host: true
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'lucide-react'],
+    include: [
+      'react', 
+      'react-dom', 
+      'react-router-dom',
+      'framer-motion',
+      'lucide-react',
+      'zustand',
+      'date-fns'
+    ],
     exclude: ['@lottiefiles/react-lottie-player']
   },
+  envPrefix: 'VITE_',
   build: {
     outDir: 'dist',
     sourcemap: false,
@@ -92,14 +114,35 @@ export default defineConfig({
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
           'router-vendor': ['react-router-dom'],
-          'ui-vendor': ['framer-motion', 'lucide-react'],
-          'chart-vendor': ['apexcharts', 'react-apexcharts'],
-          'utils-vendor': ['date-fns', 'zod', 'zustand']
+          'ui-vendor': ['lucide-react', 'framer-motion'],
+          'utils-vendor': ['date-fns', 'zustand']
+        },
+        chunkFileNames: 'js/[name]-[hash].js',
+        entryFileNames: 'js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+          
+          const info = assetInfo.name.split('.');
+          const extType = info[info.length - 1];
+          if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(assetInfo.name)) {
+            return `images/[name]-[hash].${extType}`;
+          }
+          if (/\.(woff2?|eot|ttf|otf)$/.test(assetInfo.name)) {
+            return `fonts/[name]-[hash].${extType}`;
+          }
+          return `assets/[name]-[hash].${extType}`;
         }
       }
     },
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 1000,
     target: 'esnext',
-    cssCodeSplit: true
+    cssCodeSplit: true,
+    assetsInlineLimit: 4096
+  },
+  css: {
+    devSourcemap: true
+  },
+  esbuild: {
+    target: 'esnext'
   }
-});
+}); 
